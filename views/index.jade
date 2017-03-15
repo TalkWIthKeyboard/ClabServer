@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    div.body
+        div.form-group
+            label(for='chooseInput') Input:
+                input#chooseInput.form-control
+        textarea#resultTxt.form-control(rows=3)
+        button#submitBtn.btn.btn-default Submit
+
+    script(src='/javascripts/page/index.js')

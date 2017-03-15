@@ -1,0 +1,4 @@
+
+color,2,Black,0,White,1,Red,2,Blue,3,
+size,2,Small,0,Medium,1,Large,2,
+print,1,MIB,0,STW,1,
