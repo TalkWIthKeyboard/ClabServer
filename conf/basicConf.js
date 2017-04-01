@@ -3,17 +3,30 @@
  */
 exports.pageSize = 10;
 
+exports.PUBLIC_LIB = {
+
+  // CLab库的cp文件
+  CLAB_LIB_CP: {
+    path: '/CLab10/examples/shirt/shirt.cp',
+    name: 'CLAB_LIB_CP'
+  },
+
+  CLAB_LIB_DUMP: {
+    path: '/CLab10/examples/shirt/outputDump.dump',
+    name: 'CLAB_LIB_DUMP'
+  },
+
+  CLAB_LIB_OUT: {
+    path: '/CLab10/examples/shirt/output.out',
+    name: 'CLAB_LIB_OUT'
+  }
+};
+
 exports.ERROR_INFO = {
 
   SUCCESS: {
     'number': 200,
     'value': '操作成功完成'
-  },
-
-  // 数据库状态码
-  DATABASE_ERR: {
-    'number': 410,
-    'value': '数据库操作有误'
   },
 
   // 错误状态码

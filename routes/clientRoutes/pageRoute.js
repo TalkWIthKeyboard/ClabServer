@@ -3,53 +3,44 @@
  */
 
 let pub = {},
-  Promise = require('promise'),
-  _ = require('underscore'),
-  errorInfo = require('./../../conf/basicConf').ERROR_INFO,
-  resUtil = require('./../../utils/resReturnUtil'),
-  regularMaker = require('./../../services/RegularMakerService'),
-  parser = require('./../../services/ParserService');
+  resUtil = require('./../../utils/resReturnUtil');
 
 /**
- * 获取正确结果集
+ * 产品选择页面
  * @param req
  * @param res
  */
-pub.getResult = (req, res) => {
-
-  let choose = req.body.choose || false;
-
-  if (choose) {
-    Promise.resolve(
-      parser.chooseFileParser('color:Black,print:MIB')
-    ).then(
-      regularMaker.strMaker
-    ).then((reduce) => {
-      // 寻找所有可行解
-      let results = [];
-      _.map(global.setReduce, (result) => {
-        regularMaker.compareStr(reduce, result, (flag) => {
-          flag ? results.push(result) : null;
-        })
-      });
-      resUtil.resSuccessHandler(res, {
-        'results': results
-      })
-    })
-  } else {
-    resUtil.resErrorHandler(res, errorInfo.REQUEST_ERR)
-  }
+pub.choosePage = (req, res) => {
+  resUtil.renderPageHandler(res, 'choosePage', '产品选择');
 };
 
 /**
- * 测试页面
+ * 一致性检查页面
  * @param req
  * @param res
  */
-pub.testPage = (req, res) => {
-  res.render('index', {
-    'layout': false
-  })
+pub.checkoutPage = (req, res) => {
+  resUtil.renderPageHandler(res, 'checkoutPage', '一致检查');
+};
+
+/**
+ * 在线编辑页面
+ * @param req
+ * @param res
+ */
+pub.editPage = (req, res) => {
+  resUtil.renderPageHandler(res, 'editPage', '在线编辑')
+};
+
+/**
+ * 默认主页
+ * @param req
+ * @param res
+ */
+pub.indexPage = (req, res) => {
+  res.redirect('/client/editServer');
 };
 
 module.exports = pub;
+
+

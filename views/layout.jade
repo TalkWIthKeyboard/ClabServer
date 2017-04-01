@@ -3,7 +3,26 @@ html
   head
     title= title
     link(rel='stylesheet', href='/javascripts/lib/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/stylesheets/basic.css')
     script(src='/javascripts/lib/jquery/dist/jquery.js')
     script(src='/javascripts/lib/bootstrap/dist/js/bootstrap.js')
   body
+    nav.navbar.navbar-inverse
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar-menu', aria-expanded='false')
+          span.sr-only Toggle navigation
+          span.icon-bar
+          span.icon-bar
+          span.icon-bar
+        a.navbar-brand(href='#') CLAB
+      #navbar-menu.collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            a(href='/client/editServer') 在线编辑
+          li.active
+            a(href='/client/checkoutServer') 一致检验
+          li
+            a(href='/client/chooseServer') 配置选择
     block content
+
+

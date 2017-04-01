@@ -7,7 +7,9 @@
 let router = require('express').Router(),
   pageRouter = require('./clientRoutes/pageRoute');
 
-router.post('/result',pageRouter.getResult);
-router.get('/test', pageRouter.testPage);
+router.get('/', pageRouter.indexPage);
+router.get('/chooseServer', pageRouter.choosePage);
+router.get('/editServer', pageRouter.editPage);
+router.get('/checkoutServer', pageRouter.checkoutPage);
 
 module.exports = router;

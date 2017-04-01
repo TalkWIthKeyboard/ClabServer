@@ -1,0 +1,40 @@
+//
+   Created by CoderSong on 17/4/1.
+
+extends layout
+
+block content
+  .container-fluid(style='text-align: center')
+    .row
+      .col-md-4
+        form.form-horizontal.form-margin
+          .form-group
+            label(for='input-rule') 规则
+            input#exampleInputFile(type='file')
+            .upload-box.row
+              .col-md-9.col-md-box
+                input#file-name-input.form-control(disabled='')
+              .col-md-2.col-md-box
+                button.btn.btn-success.sure-upload-btn(type='button') 上传
+            textarea#input-rule.form-control.input-text.text-write-box(type='text', style='height: 511px')
+          .form-group
+            button#sureBtn.btn.btn-primary(type='button')
+              | 确定
+      .col-md-4
+        form.form-horizontal.form-margin
+          .form-group
+            label(for='output-summary') 输出（总体）
+            textarea#output-summary.form-control.input-text(type='text', readonly='', style='height: 550px')
+          .form-group
+            a.btn.btn-primary.download-btn(href="{{ url_for('static', filename='CLab10/examples/shirt/output.out') }}")
+              | 下载
+      .col-md-4
+        form.form-horizontal.form-margin
+          .form-group
+            label(for='output-detail') 输出（详细）
+            textarea#output-detail.form-control.input-text(type='text', readonly='', style='height: 550px')
+          .form-group
+            a.btn.btn-primary.download-btn(href="{{ url_for('static', filename='CLab10/examples/shirt/outputDump.dump') }}")
+              | 下载
+
+  script(src='/javascripts/page/edit.js')
