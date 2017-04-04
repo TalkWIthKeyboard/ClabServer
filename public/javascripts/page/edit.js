@@ -16,7 +16,7 @@ $(function () {
         'rule': rule
       },
       success: function (data) {
-        if (data['code'] == 200) {
+        if (data.code.number == 200) {
           $('#output-summary').val(data['summary']);
           $('#output-detail').val(data['detail']);
           $('.download-btn').removeAttr('disabled');
@@ -24,7 +24,7 @@ $(function () {
         else {
           $('#output-summary').empty();
           $('#output-detail').empty();
-          alert(data['error']);
+          alert(data.code.value);
         }
       }
     })
@@ -56,7 +56,7 @@ $(function () {
       processData: false,
       contentType: false,
       success: function (data) {
-        if (data['code'] == 200) {
+        if (data.code.number == 200) {
           $('#output-summary').val(data['summary']);
           $('#output-detail').val(data['detail']);
           $('#input-rule').val(data['input']);
@@ -65,7 +65,7 @@ $(function () {
         else {
           $('#output-summary').empty();
           $('#output-detail').empty();
-          alert(data[error]);
+          alert(data.code.value);
         }
       }
     })

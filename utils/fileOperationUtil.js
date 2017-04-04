@@ -32,7 +32,7 @@ pub.writeToFileSync = (file, content) => {
 pub.operationCLabSync = (opFile, reFile, exeFileName) => {
   let execIn = './' + exeFileName;
   let dump = path.join(reFile, 'outputDump.dump');
-  let output = path.join(reFile, 'output.out');
+  let output = path.join(reFile, 'output.txt');
   let res = {};
   ex('cd ' + opFile + '&& make clean && make &&' + execIn);
   res.detail = fs.readFileSync(dump).toString();
