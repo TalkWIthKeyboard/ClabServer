@@ -3,21 +3,22 @@
  */
 exports.pageSize = 10;
 
-exports.PUBLIC_LIB = {
+exports.FILE_TYPE = ['text/xml', 'application/octet-stream'];
 
+exports.PUBLIC_LIB = {
   // CLab库的cp文件
   CLAB_LIB_CP: {
-    path: '/CLab10/examples/shirt/shirt.cp',
+    path: 'public/CLab10/examples/shirt/shirt.cp',
     name: 'CLAB_LIB_CP'
   },
 
   CLAB_LIB_DUMP: {
-    path: '/CLab10/examples/shirt/outputDump.dump',
+    path: 'public/CLab10/examples/shirt/outputDump.dump',
     name: 'CLAB_LIB_DUMP'
   },
 
   CLAB_LIB_OUT: {
-    path: '/CLab10/examples/shirt/output.out',
+    path: 'public/CLab10/examples/shirt/output.out',
     name: 'CLAB_LIB_OUT'
   }
 };
@@ -45,5 +46,9 @@ exports.ERROR_INFO = {
   EXIST_ERR: {
     'number': 404,
     'value': '不已经存在字段'
+  },
+  UPLOADING_ERR: {
+    'number': 405,
+    'value': '上传文件出现错误'
   }
 };

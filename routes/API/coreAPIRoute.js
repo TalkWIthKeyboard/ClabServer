@@ -6,7 +6,9 @@ let pub = {},
   Promise = require('promise'),
   _ = require('underscore'),
   fs = require('fs'),
-  errorInfo = require('./../../conf/basicConf').ERROR_INFO,
+  fileOperation = require('./../../utils/fileOperationUtil'),
+  requestCheck = require('./../../utils/requestCheckUtil'),
+  basicConf = require('./../../conf/basicConf'),
   resUtil = require('./../../utils/resReturnUtil'),
   regularMaker = require('./../../services/RegularMakerService'),
   parser = require('./../../services/ParserService');
@@ -18,11 +20,10 @@ let pub = {},
  */
 pub.chooseGetResult = (req, res) => {
 
-  let choose = req.body.choose || false;
-
-  if (choose) {
+  let args = {};
+  requestCheck.requestBodyParamsCheck(req, res, 'chooseGetResult', args, (args) => {
     Promise.resolve(
-      parser.chooseFileParser('color:Black,print:MIB')
+      parser.chooseFileParser(args.body['choose'])
     ).then(
       regularMaker.strMaker
     ).then((reduce) => {
@@ -37,9 +38,7 @@ pub.chooseGetResult = (req, res) => {
         'results': results
       })
     })
-  } else {
-    resUtil.resErrorHandler(res, errorInfo.REQUEST_ERR)
-  }
+  });
 };
 
 /**
@@ -48,9 +47,18 @@ pub.chooseGetResult = (req, res) => {
  * @param res
  */
 pub.editByPage = (req, res) => {
-
-  let rule = req.body.rule || false;
-
+  let args = {};
+  requestCheck.requestBodyParamsCheck(req, res, 'editByPage', args, (args) => {
+    try {
+      // 同步写文件
+      fileOperation.writeToFileSync(basicConf.PUBLIC_LIB.CLAB_LIB_CP.path, args.body['rule']);
+      // 同步开进程运行CLab
+      let ans = fileOperation.operationCLabSync('public/CLab10/examples/shirt', 'shirt');
+      resUtil.resSuccessHandler(res, ans);
+    } catch (err) {
+      resUtil.resErrorHandler(res, basicConf.ERROR_INFO.INSIDE_ERR, err);
+    }
+  });
 };
 
 /**
@@ -59,7 +67,18 @@ pub.editByPage = (req, res) => {
  * @param res
  */
 pub.editByFile = (req, res) => {
-
+  fileOperation.uploadingFile(req, (path) => {
+    try {
+      let content = fs.readFileSync('public/' + path).toString();
+      fileOperation.writeToFileSync(basicConf.PUBLIC_LIB.CLAB_LIB_CP.path, content);
+      let ans = fileOperation.operationCLabSync('public/CLab10/examples/shirt', 'shirt');
+      resUtil.resSuccessHandler(res, ans);
+    } catch (err) {
+      resUtil.resErrorHandler(res, basicConf.ERROR_INFO.INSIDE_ERR, err);
+    }
+  }, (err) => {
+    resUtil.resErrorHandler(res, err);
+  })
 };
 
 /**

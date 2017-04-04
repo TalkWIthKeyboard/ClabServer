@@ -28,8 +28,9 @@ app.listen(port);
 
 // 路由分流
 const serverRouter = require('./routes/server-router'),
-  clientRouter = require('./routes/client-router');
-// app.use('/server/', serverRouter);
+  clientRouter = require('./routes/client-router'),
+  apiRouter = require('./routes/api-router');
+app.use('/api/', apiRouter);
 app.use('/client/', clientRouter);
 
 
