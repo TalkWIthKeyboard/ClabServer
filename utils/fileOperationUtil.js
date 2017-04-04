@@ -37,7 +37,6 @@ pub.operationCLabSync = (opFile, reFile, exeFileName) => {
   ex('cd ' + opFile + '&& make clean && make &&' + execIn);
   res['detail'] = fs.readFileSync(dump).toString();
   res['summary'] = fs.readFileSync(output).toString();
-  console.log(res);
   return res;
 };
 
