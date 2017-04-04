@@ -17,10 +17,7 @@ pub.resErrorHandler = (res, code, err) => {
 };
 
 pub.renderPageHandler = (res, page, title) => {
-  return res.render(page, {
-    'layout': false,
-    'title': title
-  })
+  return res.render(page, {'layout': false, 'title': title})
 };
 
 module.exports = pub;
