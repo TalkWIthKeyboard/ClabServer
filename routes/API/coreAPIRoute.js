@@ -6,6 +6,7 @@ let pub = {},
   Promise = require('promise'),
   _ = require('underscore'),
   fs = require('fs'),
+  path = require('path'),
   fileOperation = require('./../../utils/fileOperationUtil'),
   requestCheck = require('./../../utils/requestCheckUtil'),
   basicConf = require('./../../conf/basicConf'),
@@ -34,9 +35,7 @@ pub.chooseGetResult = (req, res) => {
           flag ? results.push(result) : null;
         })
       });
-      resUtil.resSuccessHandler(res, {
-        'results': results
-      })
+      resUtil.resSuccessHandler(res, {'results': results})
     })
   });
 };
@@ -53,7 +52,7 @@ pub.editByPage = (req, res) => {
       // 同步写文件
       fileOperation.writeToFileSync(basicConf.PUBLIC_LIB.CLAB_LIB_CP.path, args.body['rule']);
       // 同步开进程运行CLab
-      let ans = fileOperation.operationCLabSync('public/CLab10/examples/shirt', 'shirt');
+      let ans = fileOperation.operationCLabSync(path.join(__dirname, '..', '..', 'public', 'CLab10', 'examples', 'shirt'), 'shirt');
       resUtil.resSuccessHandler(res, ans);
     } catch (err) {
       resUtil.resErrorHandler(res, basicConf.ERROR_INFO.INSIDE_ERR, err);

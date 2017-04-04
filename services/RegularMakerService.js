@@ -6,14 +6,6 @@ let pub = {},
   _ = require('underscore');
 
 /**
- * 结构字符串转正则表达式（暂时不启用）
- * @param reduce
- */
-pub.regularMaker = (reduce) => {
-
-};
-
-/**
  * 制作结构字符串
  * @param reduce
  */

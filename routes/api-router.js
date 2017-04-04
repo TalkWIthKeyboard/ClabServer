@@ -9,5 +9,6 @@ let router = require('express').Router(),
 
 router.post('/edit/page', apiRouter.editByPage);
 router.post('/edit/file', apiRouter.editByFile);
+router.post('/choose/result', apiRouter.chooseGetResult);
 
 module.exports = router;

@@ -4,7 +4,7 @@
 
 $(document).ready(function () {
 
-  var url = '/client/result';
+  var url = '/api/choose/result';
   $('#submitBtn').click(function () {
     var chooseData = $('#chooseInput').val() || false;
     if (chooseData) {

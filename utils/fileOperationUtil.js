@@ -9,7 +9,7 @@ let pub = {},
   fileType = require('./../conf/basicConf').FILE_TYPE,
   error = require('./../conf/basicConf').ERROR_INFO,
   _ = require('underscore'),
-  ex = require('child_process').execFileSync;
+  ex = require('child_process').execSync;
 
 /**
  * 同步写内容到文件中
@@ -33,7 +33,7 @@ pub.operationCLabSync = (opFile, exeFileName) => {
   let dump = path.join(opFile, 'outputDump.dump');
   let output = path.join(opFile, 'output.out');
   let res = {};
-  ex('cd', [file]);
+  ex('cd ' + opFile);
   ex('make clean');
   ex('make');
   ex(execIn);
