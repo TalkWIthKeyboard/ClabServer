@@ -17,8 +17,8 @@ $(function () {
       },
       success: function (data) {
         if (data.code.number == 200) {
-          $('#output-summary').val(data['summary']);
-          $('#output-detail').val(data['detail']);
+          $('#output-summary').val(data.data['summary']);
+          $('#output-detail').val(data.data['detail']);
           $('.download-btn').removeAttr('disabled');
         }
         else {
@@ -57,9 +57,9 @@ $(function () {
       contentType: false,
       success: function (data) {
         if (data.code.number == 200) {
-          $('#output-summary').val(data['summary']);
-          $('#output-detail').val(data['detail']);
-          $('#input-rule').val(data['input']);
+          $('#output-summary').val(data.data['summary']);
+          $('#output-detail').val(data.data['detail']);
+          $('#input-rule').val(data.data['input']);
           $('.download-btn').removeAttr('disabled');
         }
         else {
