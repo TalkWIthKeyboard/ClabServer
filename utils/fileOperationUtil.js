@@ -25,13 +25,14 @@ pub.writeToFileSync = (file, content) => {
 
 /**
  * 同步操作CLab文件并获取结果
- * @param opFile 操作的文件夹地址
+ * @param opFile 操作的文件夹的绝对地址
+ * @param reFile 操作的文件夹的相对地址
  * @param exeFileName 可执行文件名
  */
-pub.operationCLabSync = (opFile, exeFileName) => {
+pub.operationCLabSync = (opFile, reFile, exeFileName) => {
   let execIn = './' + exeFileName;
-  let dump = path.join(opFile, 'outputDump.dump');
-  let output = path.join(opFile, 'output.out');
+  let dump = path.join(reFile, 'outputDump.dump');
+  let output = path.join(reFile, 'output.out');
   let res = {};
   ex('cd ' + opFile + '&& make clean && make &&' + execIn);
   res.detail = fs.readFileSync(dump).toString();
