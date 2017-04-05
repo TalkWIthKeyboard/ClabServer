@@ -10,29 +10,20 @@ RUN echo 'deb http://mirrors.163.com/debian-security jessie/updates main contrib
 RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>> /etc/apt/sources.list
 RUN apt-get update
 
-ENV N_DIR /usr/local/n
-ENV NODE_VERSION 6.2.2
-ENV WORK_DIR /workspace
+RUN apt-get -y install curl
 
-# 安装nodejs和npm
-RUN apt-get -y install git-core curl build-essential openssl libssl-dev python
-RUN git init
-RUN git clone https://github.com/joyent/node.git
-WORKDIR /node
-RUN git checkout v0.12.7
-RUN ./configure
-RUN make
-RUN make install \
-    && apt-get -y install npm \
-    && npm --registry=https://registry.npm.taobao.org install --g n \
-    && n v$NODE_VERSION
+# 配置环境变量
+ENV NVM_DIR /usr/local/nvm
+ENV NODE_VERSION 6.2.2
+ENV WORK_DIR /ClabServer
+
+# 下载和配置Node.js环境
+# 这些命令一定要写在一起, 否则`nvm`命令会找不到
+RUN curl -sL https://deb.nodesource.com/setup_4.x | bash -   apt-get install -y nodejs
+RUN node -v
 
 # 安装需要的工具
 RUN apt-get -y install make g++ byacc flex
-
-# node环境变量
-ENV NODE_PATH $N_DIR/v$NODE_VERSION/lib/node_modules
-ENV PATH      $N_DIR/v$NODE_VERSION/bin:$PATH
 
 # 将项目复制到镜像中
 WORKDIR ~
@@ -50,3 +41,4 @@ EXPOSE 3000:3000
 
 # 启动项目
 CMD ["nodemon", "app.js"]
+
