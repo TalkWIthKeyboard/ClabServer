@@ -21,10 +21,8 @@ RUN n v6.2.2
 # 将项目复制到镜像中
 COPY . /ClabServer
 WORKDIR /ClabServer
-RUN ls
 
 # 安装项目依赖
-RUN cd ClabServer
 RUN mkdir logs
 RUN npm --registry=https://registry.npm.taobao.org install
 RUN bower install bootstrap
