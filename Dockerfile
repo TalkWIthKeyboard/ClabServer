@@ -11,14 +11,17 @@ RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>>
 RUN apt-get update
 
 # 安装nodejs和npm
-RUN apt-get -y install nodejs npm
+RUN apt-get -y install git-core curl build-essential openssl libssl-dev
+RUN git clone https://github.com/joyent/node.git
+RUN cd node
+RUN git checkout v0.10.33
+RUN ./configure
+RUN make
+RUN make install
+RUN apt-get -y install npm
+RUN node -v
 RUN npm --registry=https://registry.npm.taobao.org install --g n
 RUN n v6.2.2
-
-#
-RUN cat /etc/profile
-RUN export PATH=/usr/local/python/bin:/usr/local/node/bin:$PATH
-RUN ls /usr/local
 
 # 安装需要的工具
 RUN apt-get -y install make g++ byacc flex
