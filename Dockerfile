@@ -15,8 +15,7 @@ RUN apt-get update
 RUN apt-get -y install make g++ byacc flex
 
 # 安装nodejs和npm
-RUN apt-get install nodejs
-RUN apt-get install npm
+RUN apt-get -y install nodejs npm
 RUN npm --registry=https://registry.npm.taobao.org install --g n
 RUN n v6.2.2
 
