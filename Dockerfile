@@ -26,7 +26,7 @@ ENV NODE_PATH $NVM_DIR/v$NODE_VERSION/lib/node_modules
 ENV PATH      $NVM_DIR/v$NODE_VERSION/bin:$PATH
 
 # 安装需要的工具
-RUN apt-get -y install make g++ byacc flex
+RUN apt-get -y install make g++ byacc flex npm
 
 # 将项目复制到镜像中
 WORKDIR ~
