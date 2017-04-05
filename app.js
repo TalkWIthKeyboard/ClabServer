@@ -4,6 +4,7 @@ const port = process.env.PORT || 4000,
   express = require('express'),
   Promise = require('promise'),
   path = require('path'),
+  log4js = require('./logger'),
   partials = require('express-partials'),
   bodyParser = require('body-parser'),
   parser = require('./services/ParserService'),
@@ -25,6 +26,9 @@ app.locals.moment = require('moment');
 
 // 监听端口
 app.listen(port);
+
+// 日志配置（还可以配置级别，如果不配置默认为debug级别）
+log4js.use(app);
 
 // 路由分流
 const serverRouter = require('./routes/server-router'),
