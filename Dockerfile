@@ -8,6 +8,7 @@ RUN echo 'deb http://mirrors.163.com/debian jessie main non-free contrib'> /etc/
 RUN echo 'http://mirrors.163.com/debian jessie-proposed-updates main contrib non-free'>> /etc/apt/sources.list
 RUN echo 'http://mirrors.163.com/debian-security jessie/updates main contrib non-free'>> /etc/apt/sources.list
 RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>> /etc/apt/sources.list
+RUN cat /etc/apt/sources.list
 RUN apt-get update
 
 # 安装需要的工具
