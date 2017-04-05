@@ -37,7 +37,7 @@ WORKDIR /ClabServer
 RUN mkdir logs
 RUN ls
 RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install"]
-RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install bower"]
+RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install --g --save bower"]
 RUN ["/bin/bash", "-c", "bower install bootstrap"]
 
 # 暴露端口
