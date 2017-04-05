@@ -25,6 +25,8 @@ RUN make
 RUN make install
 RUN apt-get -y install npm
 RUN node -v
+RUN mv node /usr/local/
+RUN ls /usr/local
 RUN npm --registry=https://registry.npm.taobao.org install --g n
 RUN n v$NODE_VERSION
 
