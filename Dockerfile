@@ -8,7 +8,6 @@ RUN echo 'deb http://mirrors.163.com/debian jessie main non-free contrib'> /etc/
 RUN echo 'deb http://mirrors.163.com/debian jessie-proposed-updates main contrib non-free'>> /etc/apt/sources.list
 RUN echo 'deb http://mirrors.163.com/debian-security jessie/updates main contrib non-free'>> /etc/apt/sources.list
 RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>> /etc/apt/sources.list
-RUN cat /etc/apt/sources.list
 RUN apt-get update
 
 # 安装需要的工具
@@ -22,6 +21,7 @@ RUN n v6.2.2
 # 将项目复制到镜像中
 COPY . /ClabServer
 WORKDIR /ClabServer
+RUN ls
 
 # 安装项目依赖
 RUN cd ClabServer
