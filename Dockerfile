@@ -10,6 +10,19 @@ RUN echo 'deb http://mirrors.163.com/debian-security jessie/updates main contrib
 RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>> /etc/apt/sources.list
 RUN apt-get update
 
+
+
+# 将项目复制到镜像中
+WORKDIR ~
+COPY . /ClabServer
+RUN cd /ClabServer
+
+# 安装项目依赖
+RUN mkdir logs
+RUN ls
+RUN npm --registry=https://registry.npm.taobao.org install
+RUN bower install bootstrap
+
 # 安装nodejs和npm
 RUN apt-get -y install git-core curl build-essential openssl libssl-dev python
 RUN git init
@@ -26,16 +39,6 @@ RUN n v6.2.2
 
 # 安装需要的工具
 RUN apt-get -y install make g++ byacc flex
-
-# 将项目复制到镜像中
-WORKDIR ~
-COPY . /ClabServer
-WORKDIR /ClabServer
-
-# 安装项目依赖
-RUN mkdir logs
-RUN npm --registry=https://registry.npm.taobao.org install
-RUN bower install bootstrap
 
 # 暴露端口
 EXPOSE 3000:3000
