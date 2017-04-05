@@ -36,7 +36,7 @@ WORKDIR /ClabServer
 # 安装项目依赖
 RUN mkdir logs
 RUN ls
-RUN npm --registry=https://registry.npm.taobao.org install
+RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install"]
 RUN bower install bootstrap
 
 # 暴露端口
