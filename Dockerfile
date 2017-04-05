@@ -1,4 +1,4 @@
-FROM index.docker.io/32bit/debian:last
+FROM 32bit/debian:last
 
 MAINTAINER ShowMeCode
 
