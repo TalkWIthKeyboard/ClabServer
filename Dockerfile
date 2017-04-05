@@ -12,11 +12,10 @@ RUN apt-get update
 
 # 安装nodejs和npm
 RUN apt-get -y install nodejs npm
-RUN node --version
 RUN npm --registry=https://registry.npm.taobao.org install --g n
 RUN n v6.2.2
 
-# 
+#
 RUN cat /etc/profile
 
 # 安装需要的工具
