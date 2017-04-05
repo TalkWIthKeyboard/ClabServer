@@ -12,7 +12,7 @@ RUN cat /etc/apt/sources.list
 RUN apt-get update
 
 # 安装需要的工具
-RUN apt-get install make g++ byacc flex
+RUN apt-get -y install make g++ byacc flex
 
 # 安装nodejs和npm
 RUN apt-get install nodejs
