@@ -5,8 +5,8 @@ MAINTAINER ShowMeCode
 # 镜像的指令操作
 # 修改debian的源更新apt-get
 RUN echo 'deb http://mirrors.163.com/debian jessie main non-free contrib'> /etc/apt/sources.list
-RUN echo 'http://mirrors.163.com/debian jessie-proposed-updates main contrib non-free'>> /etc/apt/sources.list
-RUN echo 'http://mirrors.163.com/debian-security jessie/updates main contrib non-free'>> /etc/apt/sources.list
+RUN echo 'deb http://mirrors.163.com/debian jessie-proposed-updates main contrib non-free'>> /etc/apt/sources.list
+RUN echo 'deb http://mirrors.163.com/debian-security jessie/updates main contrib non-free'>> /etc/apt/sources.list
 RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>> /etc/apt/sources.list
 RUN cat /etc/apt/sources.list
 RUN apt-get update
