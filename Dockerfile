@@ -15,7 +15,6 @@ RUN apt-get -y install git-core curl build-essential openssl libssl-dev
 RUN git init
 RUN git clone https://github.com/joyent/node.git
 RUN cd node
-RUN git checkout v0.10.33
 RUN ./configure
 RUN make
 RUN make install
