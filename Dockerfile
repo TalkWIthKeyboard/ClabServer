@@ -37,7 +37,7 @@ WORKDIR /ClabServer
 RUN mkdir logs
 RUN ls
 RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install"]
-RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install -g --save bower && bower install bootstrap"]
+RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install -g --save bower]
 RUN ["/bin/bash", "-c", "ln -s /usr/bin/nodejs /usr/bin/node"]
 RUN ["/bin/bash", "-c", "bower install bootstrap"]
 
