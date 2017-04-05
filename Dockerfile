@@ -20,7 +20,8 @@ RUN n v6.2.2
 
 # 将项目复制到镜像中
 COPY . /ClabServer
-WORKDIR /ClabServer
+RUN ls
+RUN cd /ClabServer
 
 # 安装项目依赖
 RUN mkdir logs
