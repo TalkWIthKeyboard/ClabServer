@@ -14,7 +14,7 @@ RUN apt-get update
 RUN apt-get -y install git-core curl build-essential openssl libssl-dev
 RUN git init
 RUN git clone https://github.com/joyent/node.git
-RUN cd node
+WORKDIR /node
 RUN git checkout v0.12.7
 RUN ./configure
 RUN make
@@ -28,9 +28,9 @@ RUN n v6.2.2
 RUN apt-get -y install make g++ byacc flex
 
 # 将项目复制到镜像中
+WORKDIR ~
 COPY . /ClabServer
-RUN ls
-RUN cd /ClabServer
+WORKDIR /ClabServer
 
 # 安装项目依赖
 RUN mkdir logs
