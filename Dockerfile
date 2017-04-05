@@ -10,14 +10,17 @@ RUN echo 'deb http://mirrors.163.com/debian-security jessie/updates main contrib
 RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>> /etc/apt/sources.list
 RUN apt-get update
 
-# 安装需要的工具
-RUN apt-get -y install make g++ byacc flex
-
 # 安装nodejs和npm
 RUN apt-get -y install nodejs npm
 RUN node --version
 RUN npm --registry=https://registry.npm.taobao.org install --g n
 RUN n v6.2.2
+
+# 
+RUN cat /etc/profile
+
+# 安装需要的工具
+RUN apt-get -y install make g++ byacc flex
 
 # 将项目复制到镜像中
 COPY . /ClabServer
