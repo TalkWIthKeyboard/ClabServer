@@ -10,7 +10,7 @@ RUN echo 'deb http://mirrors.163.com/debian-security jessie/updates main contrib
 RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>> /etc/apt/sources.list
 RUN apt-get update
 
-RUN apt-get install curl
+RUN apt-get -y install curl
 
 # 配置环境变量
 ENV NVM_DIR /usr/local/nvm
