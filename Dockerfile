@@ -11,7 +11,7 @@ RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>>
 RUN apt-get update
 
 # 安装nodejs和npm
-RUN apt-get -y install git-core curl build-essential openssl libssl-dev
+RUN apt-get -y install git-core curl build-essential openssl libssl-dev python
 RUN git init
 RUN git clone https://github.com/joyent/node.git
 WORKDIR /node
