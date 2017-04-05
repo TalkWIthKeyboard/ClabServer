@@ -1,0 +1,24 @@
+{
+  "restartable": "rs",
+  "verbose": "false",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules"
+  ],
+  "execMap": {
+    "": "node",
+    "js": "node --harmony"
+  },
+  "events": {
+    "restart": "osascript -e 'display notification \"App restarted due to:\n'$FILENAME'\" with title \"nodemon\"'",
+    "crash": "This app is crashed！"
+  },
+  "watch": [
+    "ClabServer/views",
+    "ClabServer/public/stylesheets"
+  ],
+  "env": {
+    "NODE_ENV": "development",
+    "PORT": "3000"
+  }
+}

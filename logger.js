@@ -4,7 +4,6 @@
 
 log4js = require('log4js');
 
-// 日志配置
 log4js.configure({
   appenders: [{
     type: 'console'
@@ -16,7 +15,8 @@ log4js.configure({
     maxLogSize: 1024,
     backup: 4,
     category: 'logInfo'
-  }]
+  }],
+  "replaceConsole": true
 });
 
 levels = {
