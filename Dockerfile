@@ -4,10 +4,16 @@ MAINTAINER ShowMeCode
 
 # 镜像的指令操作
 # 修改debian的源更新apt-get
-RUN echo 'deb http://mirrors.163.com/debian jessie main non-free contrib'> /etc/apt/sources.list
-RUN echo 'deb http://mirrors.163.com/debian jessie-proposed-updates main contrib non-free'>> /etc/apt/sources.list
-RUN echo 'deb http://mirrors.163.com/debian-security jessie/updates main contrib non-free'>> /etc/apt/sources.list
-RUN echo 'deb http://security.debian.org jessie/updates main contrib non-free'>> /etc/apt/sources.list
+RUN echo 'deb http://security.debian.org/ jessie/updates main'> /etc/apt/sources.list
+RUN echo 'deb-src http://security.debian.org/ jessie/updates main'>> /etc/apt/sources.list
+RUN echo 'deb http://ftp.cn.debian.org/debian jessie main non-free contrib'>> /etc/apt/sources.list
+RUN echo 'deb http://ftp.cn.debian.org/debian jess-proposed-updates main contrib no'>> /etc/apt/sources.list
+RUN echo 'deb http://ftp.cn.debian.org/debian-security jessie/updates main contrib no'>> /etc/apt/sources.list
+RUN echo 'deb-src http://ftp.cn.debian.org/debian/ jessie main contrib non-free'>> /etc/apt/sources.list
+RUN echo 'deb http://apt.tt-solutions.com/ubuntu/ feisty main'>> /etc/apt/sources.list
+RUN echo 'deb http://downloads.sourceforge.net/project/ubuntuzilla/mozilla/apt all main'>> /etc/apt/sources.list
+RUN echo 'deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main'>> /etc/apt/sources.list
+RUN echo 'deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu precise main'>> /etc/apt/sources.list
 RUN apt-get update
 
 # 安装nodejs和npm
@@ -15,6 +21,7 @@ RUN apt-get -y install git-core curl build-essential openssl libssl-dev
 RUN git init
 RUN git clone https://github.com/joyent/node.git
 RUN cd node
+RUN ls
 RUN ./configure
 RUN make
 RUN make install
