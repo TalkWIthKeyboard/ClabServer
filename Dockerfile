@@ -17,6 +17,8 @@ RUN n v6.2.2
 
 #
 RUN cat /etc/profile
+RUN export PATH=/usr/local/python/bin:/usr/local/node/bin:$PATH
+RUN ls /usr/local
 
 # 安装需要的工具
 RUN apt-get -y install make g++ byacc flex
