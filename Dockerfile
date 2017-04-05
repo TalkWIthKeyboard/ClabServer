@@ -20,8 +20,8 @@ ENV WORK_DIR /ClabServer
 # 下载和配置Node.js环境
 # 这些命令一定要写在一起, 否则`nvm`命令会找不到
 RUN curl https://raw.githubusercontent.com/creationix/nvm/v0.24.0/install.sh >> install.sh
-RUN sh install.sh \
-    && source $NVM_DIR/nvm.sh \
+RUN ["/bin/bash", "-c", "sh install.sh"]
+RUN source $NVM_DIR/nvm.sh \
     && nvm install v$NODE_VERSION \
     && nvm use v$NODE_VERSION \
     && nvm alias default v$NODE_VERSION
