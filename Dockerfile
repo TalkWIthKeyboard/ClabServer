@@ -35,7 +35,7 @@ WORKDIR /ClabServer
 
 # 安装项目依赖
 RUN mkdir logs
-RUN node -v
+RUN ["/bin/bash", "-c", "node -v"]
 RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install"]
 RUN ["/bin/bash", "-c", "npm --registry=https://registry.npm.taobao.org install -g --save bower nodemon"]
 RUN ["/bin/bash", "-c", "ln -s /usr/bin/nodejs /usr/bin/node"]
